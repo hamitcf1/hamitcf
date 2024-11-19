@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Taş Kağit Makas</title>
+	</head>
+	<body>
+    <p>Taş Kağit Makas</p>
+    <button onclick="
+      const randomNumber = Math.random();
+
+      let computerMove = '';
+
+      if(randomNumber >= 0 && randomNumber < 1 / 3) {
+         computerMove = 'tas';
+      } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+         computerMove = 'kagit';
+      } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+         computerMove = 'makas';
+      }
+
+
+
+      let result = '';
+
+      if (computerMove === 'tas'){
+        result = 'Berabere.';
+      } else if (computerMove === 'kagit') {
+        result = 'Gaybettign.';
+      } else if (computerMove === 'makas') {
+        result = 'Gazanding.';
+      }
+
+      alert(`Daşi seçtin. Makine ${computerMove} seçti. ${result}.`);
+    ">Daş</button> 
+
+    
+     <button onclick=" 
+        const randomNumber = Math.random();
+
+        let computerMove = '';
+
+        if(randomNumber >= 0 && randomNumber < 1 / 3) {
+          computerMove = 'Daş';
+        } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+          computerMove = 'Kağit';
+        } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+          computerMove = 'makaslar';
+        }
+
+
+
+        let result = '';
+
+        if (computerMove === 'daş'){
+          result = 'Gazandin..';
+        } else if (computerMove === 'kagit') {
+          result = 'berabere.';
+        } else if (computerMove === 'makaslar') {
+          result = 'Kaynetting.';
+        }
+
+        alert(`Kağit seçtin. bilgisayar ${computerMove} seçti. ${result}.`);
+      ">Kağit</button> 
+
+      <button onclick="
+        const randomNumber = Math.random();
+
+        let computerMove = '';
+
+        if(randomNumber >= 0 && randomNumber < 1 / 3) {
+          computerMove = 'Daş';
+        } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+          computerMove = 'Kağit';
+        } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+          computerMove = 'makaslar';
+        }
+
+
+
+        let result = '';
+
+        if (computerMove === 'Daş'){
+          result = 'Kaynetting.';
+        } else if (computerMove === 'Kağit') {
+          result = 'Gazandin.';
+        } else if (computerMove === 'makaslar') {
+          result = 'berabere.';
+        }
+
+        alert(`MAkaslar seçtin. Bilgisayar ${computerMove} seçti. ${result}.`);
+        ">Makaslar</button>
+
+		<script>
+      
+		</script>
+	</body>
+</html>
+	
