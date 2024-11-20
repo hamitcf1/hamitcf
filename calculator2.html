@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        .clear {
+            background-color: rgb(241, 241, 241);
+        }
+        .clear:hover {
+            background-color: orange;
+        }
+        .Calculator {
+            border-radius: 900px;
+        }
+        #output {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <p>WELCOME TO MY FIRST CALCULATOR KARINA!</p>
+    <div id="output">0</div>
+    <p class="Calculator">
+        <p>
+            <button onclick="updateCalculation('1')">1</button>
+            <button onclick="updateCalculation('2')">2</button>
+            <button onclick="updateCalculation('3')">3</button>
+            <button onclick="updateCalculation('+')">+</button>
+        </p>
+        <p>
+            <button onclick="updateCalculation('4')">4</button>
+            <button onclick="updateCalculation('5')">5</button>
+            <button onclick="updateCalculation('6')">6</button>
+            <button onclick="updateCalculation('-')">-</button>
+        </p>
+        <p>
+            <button onclick="updateCalculation('7')">7</button>
+            <button onclick="updateCalculation('8')">8</button>
+            <button onclick="updateCalculation('9')">9</button>
+            <button onclick="updateCalculation('*')">*</button>
+        </p>
+        <p>
+            <button onclick="updateCalculation('0')">0</button>
+            <button onclick="updateCalculation('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="updateCalculation('/')">/</button>
+        </p>
+        <p>
+            <button class="clear" onclick="clearCalculation()">AC</button>
+        </p>
+    </p>
+
+    <script>
+        let calculation = ''; // Holds the current calculation string.
+
+        // Updates the calculation and displays it.
+        function updateCalculation(value) {
+            calculation += value;
+            document.getElementById('output').textContent = calculation;
+        }
+
+        // Calculates the result and updates the display.
+        function calculate() {
+            try {
+                calculation = eval(calculation); // Evaluate the calculation.
+                document.getElementById('output').textContent = calculation;
+            } catch (error) {
+                document.getElementById('output').textContent = 'Error'; // Display error for invalid input.
+                calculation = ''; // Reset calculation.
+            }
+        }
+
+        // Clears the calculation and resets the display.
+        function clearCalculation() {
+            calculation = '';
+            document.getElementById('output').textContent = '0';
+        }
+    </script>
+</body>
+</html>
