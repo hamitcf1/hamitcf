@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchange with Favorites</title>
+  <link rel="stylesheet" href="stylese.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Currency Exchange Calculator</h1>
+      <p>Convert currencies with real-time rates. Save your favorites!</p>
+      <button id="darkModeToggle" class="btn">🌙 Toggle Dark Mode</button>
+    </header>
+
+    <main>
+      <div id="loginContainer" class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username">
+        <button id="loginButton" class="btn">Login</button>
+        <p id="greeting" style="display: none;"></p>
+      </div>
+
+      <form id="exchangeForm" style="display: none;" onsubmit="calculateExchange(event)">
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" placeholder="Enter amount" required>
+        </div>
+
+        <div class="form-group">
+          <label for="fromCurrency">From:</label>
+          <select id="fromCurrency"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="toCurrency">To:</label>
+          <select id="toCurrency"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="favorites">Favorite Currencies:</label>
+          <select id="favorites">
+            <option value="">No favorites saved</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn">Convert</button>
+      </form>
+
+      <div id="favoriteContainer" style="display: none;">
+        <button id="saveFavorite" class="btn">Save Current Currencies as Favorite</button>
+      </div>
+
+      <div class="result">
+        <h2>Converted Amount:</h2>
+        <p id="result"></p>
+      </div>
+    </main>
+
+    <footer>
+      <p>Designed with ❤️ by Your Name</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
