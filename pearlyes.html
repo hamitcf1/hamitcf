@@ -6,7 +6,6 @@
   <title>Currency Exchange with Favorites</title>
   <link rel="stylesheet" href="stylese.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -15,6 +14,7 @@
       <h1>💱 Currency Exchange</h1>
       <p>Convert currencies with real-time rates and save your favorites!</p>
       <button id="darkModeToggle" class="btn">🌙 Toggle Dark Mode</button>
+      <button id="logoutButton" class="btn" style="display: none;">🔓 Log Out</button>
     </header>
 
     <main>
@@ -22,54 +22,75 @@
         <label for="username">Username:</label>
         <input type="text" id="username" placeholder="Enter your username">
         <button id="loginButton" class="btn">Login</button>
-        <p id="greeting" style="display: none;"></p>
       </div>
 
-      <form id="exchangeForm" style="display: none;" onsubmit="calculateExchange(event)">
-        <div class="form-group">
-          <label for="amount">Amount:</label>
-          <input type="number" id="amount" placeholder="Enter amount" required>
+      <section id="exchangeSection" style="display: none;">
+        <form id="exchangeForm" onsubmit="calculateExchange(event)">
+          <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount" required>
+          </div>
+
+          <div class="form-group">
+            <label for="fromCurrency">From Currency:</label>
+            <select id="fromCurrency"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="toCurrency">To Currency:</label>
+            <select id="toCurrency"></select>
+          </div>
+
+          <button type="submit" class="btn">Convert</button>
+        </form>
+
+        <div id="favoriteContainer">
+          <button id="saveFavorite" class="btn">Save as Favorite</button>
         </div>
 
-        <div class="form-group">
-          <label for="fromCurrency">From Currency:</label>
-          <select id="fromCurrency"></select>
+        <div class="result">
+          <h2>Converted Amount:</h2>
+          <div id="resultBox" class="result-box">
+            <p id="result"></p>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="toCurrency">To Currency:</label>
-          <select id="toCurrency"></select>
-        </div>
-
-        <div class="form-group">
-          <label for="favorites">Favorite Currencies:</label>
-          <select id="favorites">
-            <option value="">No favorites saved</option>
+        <div class="history">
+          <h3>Exchange History (Last 10):</h3>
+          <select id="historyDropdown">
+            <option>No history yet</option>
           </select>
         </div>
+      </section>
 
-        <button type="submit" class="btn">Convert</button>
-      </form>
+      <section id="muhasebeRates" class="muhasebe-section">
+        <h2>💼 Muhasebe Rates</h2>
+        <form id="muhasebeForm" onsubmit="calculateMuhasebe(event)">
+          <div class="form-group">
+            <label for="muhasebeAmount">Amount:</label>
+            <input type="number" id="muhasebeAmount" placeholder="Enter amount" required>
+          </div>
 
-      <div id="favoriteContainer" style="display: none;">
-        <button id="saveFavorite" class="btn">Save as Favorite</button>
-      </div>
+          <div class="form-group">
+            <label for="muhasebeCurrency">Currency:</label>
+            <select id="muhasebeCurrency">
+              <option value="USD">USD - United States Dollar</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - British Pound</option>
+            </select>
+          </div>
 
-      <div class="result">
-        <h2>Converted Amount:</h2>
-        <p id="result"></p>
-      </div>
+          <button type="submit" class="btn">Convert</button>
+        </form>
+
+        <div class="result-box">
+          <h3>Converted Amount:</h3>
+          <p id="muhasebeResult"></p>
+        </div>
+      </section>
     </main>
 
     <footer>
-      <div class="social-buttons">
-        <a href="https://www.facebook.com/hamitcf" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.twitter.com/hamitcf" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/in/hamitcf" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.tiktok.com/@hamitcf" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.youtube.com/hamitcf" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/hamitcf" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-      </div>
       <p>Designed with ❤️ by Hamit</p>
     </footer>
   </div>
