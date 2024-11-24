@@ -1,13 +1,4 @@
-const API_URL = 'https://api.exchangerate-api.com/v4/latest/USD';
-
-const CURRENCY_NAMES = {
-  USD: "United States Dollar",
-  EUR: "Euro",
-  TRY: "Turkish Lira",
-  GBP: "British Pound",
-  JPY: "Japanese Yen",
-  // Add more currencies as needed
-};
+const API_URL = 'https://open.er-api.com/v6/latest/USD';
 
 // Dark mode toggle
 document.getElementById('darkModeToggle').addEventListener('click', () => {
@@ -51,17 +42,19 @@ async function populateCurrencies() {
   try {
     const response = await fetch(API_URL);
     const data = await response.json();
-    const currencies = Object.keys(data.rates);
+    const currencies = Object.entries(data.rates);
 
     const fromCurrencySelect = document.getElementById('fromCurrency');
     const toCurrencySelect = document.getElementById('toCurrency');
 
-    currencies.forEach(currency => {
-      const currencyName = `${currency} - ${CURRENCY_NAMES[currency] || "Unknown Currency"}`;
+    currencies.forEach(([currencyCode, rate]) => {
+      const currencyName = data.base_code === currencyCode
+        ? `USD - United States Dollar` // Use this for a more robust implementation
+        : `${currencyCode} - ${currencyCode}`; // replace logic per your API response
       const optionFrom = document.createElement('option');
       const optionTo = document.createElement('option');
-      optionFrom.value = currency;
-      optionTo.value = currency;
+      optionFrom.value = currencyCode;
+      optionTo.value = currencyCode;
       optionFrom.textContent = currencyName;
       optionTo.textContent = currencyName;
 
@@ -104,9 +97,7 @@ function loadFavorites() {
   if (favorites) {
     const options = favorites.split(',').map(fav => {
       const [from, to] = fav.split('-');
-      const fromName = CURRENCY_NAMES[from] || from;
-      const toName = CURRENCY_NAMES[to] || to;
-      return `<option value="${fav}">${from} - ${fromName} → ${to} - ${toName}</option>`;
+      return `<option value="${fav}">${from} → ${to}</option>`;
     }).join('');
     favoritesDropdown.innerHTML = options;
   } else {
@@ -128,7 +119,7 @@ async function calculateExchange(event) {
   }
 
   try {
-    const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`);
+    const response = await fetch(`${API_URL.replace('USD', fromCurrency)}`);
     const data = await response.json();
     const rate = data.rates[toCurrency];
 
@@ -144,7 +135,7 @@ async function calculateExchange(event) {
   }
 }
 
-// Cookie Helpers
+// Cookie helpers for storing and retrieving cookies
 function setCookie(name, value, days) {
   const d = new Date();
   d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
