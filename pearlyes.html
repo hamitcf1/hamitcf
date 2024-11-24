@@ -12,6 +12,7 @@
 <body>
   <div class="container">
     <header>
+      
       <h1>💱 Currency Exchange</h1>
       <p>Convert currencies with real-time rates and save your favorites!</p>
       <button id="darkModeToggle" class="btn">🌙 Toggle Dark Mode</button>
@@ -22,8 +23,23 @@
         <label for="username">Username:</label>
         <input type="text" id="username" placeholder="Enter your username">
         <button id="loginButton" class="btn">Login</button>
+        <button id="logoutButton" class="btn" style="display: none;">Logout</button>
+        <button id="switchUserButton" class="btn" style="display: none;">Switch User</button>
         <p id="greeting" style="display: none;"></p>
       </div>
+
+      <div id="historyContainer" style="display: none;">
+        <label for="historyDropdown">Last 10 Exchanges:</label>
+        <select id="historyDropdown">
+          <option value="">No history available</option>
+        </select>
+      </div>
+      
+      <div class="result-box" id="convertedBox" style="display: none;">
+        <h2>Converted Amount:</h2>
+        <p id="result">0</p>
+      </div>
+            
 
       <form id="exchangeForm" style="display: none;" onsubmit="calculateExchange(event)">
         <div class="form-group">
