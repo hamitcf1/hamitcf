@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Currency Exchange with Favorites</title>
   <link rel="stylesheet" href="stylese.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-
   <div class="container">
     <header>
-      <h1>Currency Exchange Calculator</h1>
-      <p>Convert currencies with real-time rates. Save your favorites!</p>
+      <h1>💱 Currency Exchange</h1>
+      <p>Convert currencies with real-time rates and save your favorites!</p>
       <button id="darkModeToggle" class="btn">🌙 Toggle Dark Mode</button>
     </header>
 
     <main>
-      <!-- Login Section -->
       <div id="loginContainer" class="form-group">
         <label for="username">Username:</label>
         <input type="text" id="username" placeholder="Enter your username">
@@ -25,7 +25,6 @@
         <p id="greeting" style="display: none;"></p>
       </div>
 
-      <!-- Currency Conversion Form -->
       <form id="exchangeForm" style="display: none;" onsubmit="calculateExchange(event)">
         <div class="form-group">
           <label for="amount">Amount:</label>
@@ -33,12 +32,12 @@
         </div>
 
         <div class="form-group">
-          <label for="fromCurrency">From:</label>
+          <label for="fromCurrency">From Currency:</label>
           <select id="fromCurrency"></select>
         </div>
 
         <div class="form-group">
-          <label for="toCurrency">To:</label>
+          <label for="toCurrency">To Currency:</label>
           <select id="toCurrency"></select>
         </div>
 
@@ -52,12 +51,10 @@
         <button type="submit" class="btn">Convert</button>
       </form>
 
-      <!-- Save Favorite Button -->
       <div id="favoriteContainer" style="display: none;">
-        <button id="saveFavorite" class="btn">Save Current Currencies as Favorite</button>
+        <button id="saveFavorite" class="btn">Save as Favorite</button>
       </div>
 
-      <!-- Result Section -->
       <div class="result">
         <h2>Converted Amount:</h2>
         <p id="result"></p>
@@ -65,19 +62,16 @@
     </main>
 
     <footer>
-      <div class="rounded-social-buttons">
-        <a class="social-button facebook" href="https://www.facebook.com/hamitcf" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a class="social-button twitter" href="https://www.twitter.com/hamitcf" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a class="social-button linkedin" href="https://www.linkedin.com/in/hamitcf" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a class="social-button tiktok" href="https://www.tiktok.com/@hamitcf" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a class="social-button youtube" href="https://www.youtube.com/hamitcf" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a class="social-button instagram" href="https://www.instagram.com/hamitcf" target="_blank"><i class="fab fa-instagram"></i></a>
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/hamitcf" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.twitter.com/hamitcf" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/hamitcf" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.tiktok.com/@hamitcf" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/hamitcf" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/hamitcf" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
       </div>
       <p>Designed with ❤️ by Hamit</p>
     </footer>
   </div>
-
-  <script src="script.js"></script>
-
 </body>
 </html>

@@ -1,91 +1,67 @@
-// Dark mode toggle functionality
-document.getElementById("darkModeToggle").addEventListener("click", function () {
+// Dark mode toggle
+document.getElementById("darkModeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-  const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
-  localStorage.setItem("theme", currentMode);  // Save theme preference
+  localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
 });
 
-// Load previously saved theme
-window.addEventListener("load", function () {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
+// Load saved theme
+window.addEventListener("load", () => {
+  if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
   }
 });
 
-// User login functionality
-document.getElementById("loginButton").addEventListener("click", function () {
+// Login functionality
+document.getElementById("loginButton").addEventListener("click", () => {
   const username = document.getElementById("username").value.trim();
   if (username) {
-    localStorage.setItem("username", username); // Save username to localStorage
-    document.getElementById("greeting").textContent = `Welcome, ${username}`;
+    localStorage.setItem("username", username);
+    document.getElementById("greeting").textContent = `Welcome, ${username}!`;
     document.getElementById("greeting").style.display = "block";
     document.getElementById("loginContainer").style.display = "none";
     document.getElementById("exchangeForm").style.display = "block";
-    updateFavorites();
+    loadFavorites();
   } else {
-    alert("Please enter a username!");
+    alert("Please enter a username.");
   }
 });
 
-// Save favorite currencies functionality
-document.getElementById("saveFavorite").addEventListener("click", function () {
-  const fromCurrency = document.getElementById("fromCurrency").value;
-  const toCurrency = document.getElementById("toCurrency").value;
-
-  if (fromCurrency && toCurrency) {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favorites.push({ from: fromCurrency, to: toCurrency });
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    updateFavorites();
-  } else {
-    alert("Please select both from and to currencies.");
-  }
+// Save favorite currencies
+document.getElementById("saveFavorite").addEventListener("click", () => {
+  const from = document.getElementById("fromCurrency").value;
+  const to = document.getElementById("toCurrency").value;
+  const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+  favorites.push({ from, to });
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  loadFavorites();
 });
 
-// Update the favorites dropdown
-function updateFavorites() {
-  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+// Load favorites
+function loadFavorites() {
+  const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   const favoritesSelect = document.getElementById("favorites");
-  favoritesSelect.innerHTML = "";
-
-  if (favorites.length === 0) {
-    favoritesSelect.innerHTML = "<option value=''>No favorites saved</option>";
-  } else {
-    favorites.forEach(fav => {
-      const option = document.createElement("option");
-      option.textContent = `${fav.from} - ${fav.to}`;
-      favoritesSelect.appendChild(option);
-    });
-  }
+  favoritesSelect.innerHTML = `<option value="">No favorites saved</option>`;
+  favorites.forEach(fav => {
+    const option = document.createElement("option");
+    option.textContent = `${fav.from} -> ${fav.to}`;
+    favoritesSelect.appendChild(option);
+  });
 }
 
-// Example function for currency conversion (not functional)
+// Preload currencies
+const currencies = ["USD", "EUR", "GBP", "JPY", "AUD"];
+document.getElementById("fromCurrency").innerHTML = currencies.map(cur => `<option>${cur}</option>`).join("");
+document.getElementById("toCurrency").innerHTML = currencies.map(cur => `<option>${cur}</option>`).join("");
+
+// Calculate exchange
 function calculateExchange(event) {
   event.preventDefault();
-  const amount = document.getElementById("amount").value;
-  const fromCurrency = document.getElementById("fromCurrency").value;
-  const toCurrency = document.getElementById("toCurrency").value;
-
-  if (amount && fromCurrency && toCurrency) {
-    // Add your currency conversion logic here
-    document.getElementById("result").textContent = `Converted Amount: ${amount} ${fromCurrency} to ${toCurrency}`;
+  const amount = parseFloat(document.getElementById("amount").value);
+  const resultEl = document.getElementById("result");
+  if (!isNaN(amount)) {
+    const rate = 1.12; // Dummy exchange rate for testing
+    resultEl.textContent = `Converted Amount: ${(amount * rate).toFixed(2)}`;
+  } else {
+    resultEl.textContent = "Invalid amount.";
   }
 }
-
-// Prepopulate currencies (this could be done dynamically via an API)
-const currencies = ["USD", "EUR", "GBP", "JPY", "AUD", "CAD"];
-const fromCurrencySelect = document.getElementById("fromCurrency");
-const toCurrencySelect = document.getElementById("toCurrency");
-
-currencies.forEach(currency => {
-  const fromOption = document.createElement("option");
-  fromOption.value = currency;
-  fromOption.textContent = currency;
-  fromCurrencySelect.appendChild(fromOption);
-
-  const toOption = document.createElement("option");
-  toOption.value = currency;
-  toOption.textContent = currency;
-  toCurrencySelect.appendChild(toOption);
-});
