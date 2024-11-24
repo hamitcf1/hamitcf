@@ -1,4 +1,4 @@
-/* General Styles */
+/* Global Styles */
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -31,15 +31,13 @@ header h1 {
 }
 
 header p {
-  margin: 5px 0;
   font-size: 1.1rem;
   color: #555;
 }
 
 header .btn {
-  margin: 10px;
   padding: 10px 20px;
-  background-color: #0078d7;
+  background: #0078d7;
   color: white;
   border: none;
   border-radius: 25px;
@@ -49,10 +47,10 @@ header .btn {
 }
 
 header .btn:hover {
-  background-color: #005bb5;
+  background: #005bb5;
 }
 
-/* Main Content */
+/* Form and Results */
 main {
   background: white;
   border-radius: 10px;
@@ -60,7 +58,6 @@ main {
   padding: 20px;
 }
 
-/* Form Styling */
 .form-group {
   margin-bottom: 15px;
 }
@@ -68,7 +65,7 @@ main {
 label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 input, select {
@@ -85,21 +82,6 @@ input:focus, select:focus {
   border-color: #0078d7;
 }
 
-button.btn {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button.btn:hover {
-  background-color: #218838;
-}
-
-/* Results */
 .result {
   text-align: center;
   margin-top: 20px;
@@ -113,30 +95,6 @@ button.btn:hover {
 .result p {
   font-size: 1.2rem;
   color: #555;
-}
-
-.result-box {
-  background: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 15px;
-}
-
-.result-box h3 {
-  color: #0078d7;
-}
-
-/* Muhasebe Section */
-.muhasebe-section {
-  background-color: #e9f7fe;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-.muhasebe-section h2 {
-  color: #005bb5;
 }
 
 /* Footer */
