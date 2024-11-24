@@ -8,6 +8,7 @@
   <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
 </head>
 <body>
+
   <div class="container">
     <header>
       <h1>Currency Exchange Calculator</h1>
@@ -16,6 +17,7 @@
     </header>
 
     <main>
+      <!-- Login Section -->
       <div id="loginContainer" class="form-group">
         <label for="username">Username:</label>
         <input type="text" id="username" placeholder="Enter your username">
@@ -23,6 +25,7 @@
         <p id="greeting" style="display: none;"></p>
       </div>
 
+      <!-- Currency Conversion Form -->
       <form id="exchangeForm" style="display: none;" onsubmit="calculateExchange(event)">
         <div class="form-group">
           <label for="amount">Amount:</label>
@@ -49,10 +52,12 @@
         <button type="submit" class="btn">Convert</button>
       </form>
 
+      <!-- Save Favorite Button -->
       <div id="favoriteContainer" style="display: none;">
         <button id="saveFavorite" class="btn">Save Current Currencies as Favorite</button>
       </div>
 
+      <!-- Result Section -->
       <div class="result">
         <h2>Converted Amount:</h2>
         <p id="result"></p>
@@ -73,5 +78,6 @@
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
